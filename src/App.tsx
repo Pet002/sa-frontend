@@ -149,28 +149,28 @@ function App() {
             <CssBaseline />
             <Navbar open={open} onClick={handleDrawerOpen} />
             <DrawerBar open={open} drawerWidth={drawerWidth} handleDrawerClose={handleDrawerClose} role={role} theme={theme} />
-            
+
             <Main open={open}>
               <DrawerHeader />
               {/* function Route */}
               <Routes>
-                <Route path="/" element={<Home role={role}/>}/>
+                <Route path="/" element={<Home role={role} />} />
 
                 {/* Add element here!!!! and role  */}
-                { role === "admin" && <Route path='/' /> }
-                { role === "admin" && <Route path='/dashboard' /> }
-                { role === "admin" && <Route path='/'/> }
-                { role === "admin" && <Route path='/'/> }
+                {role === "admin" && <Route path='/' />}
+                {role === "admin" && <Route path='/dashboard' />}
+                {role === "admin" && <Route path='/' />}
+                {role === "admin" && <Route path='/' />}
 
                 {/* intendant */}
-                { role === "intendant" && <Route path='/medicines/Home' element={<MedicineHome />} /> }
-                { role === "intendant" && <Route path='/medicines' element={<Medicine />} /> }
-                { role === "intendant" && <Route path='/medicine/create' element={<MedicineCrate />} /> }
+                {role === "intendant" && <Route path='/medicines/Home' element={<MedicineHome />} />}
+                {role === "intendant" && <Route path='/medicines' element={<Medicine />} />}
+                {role === "intendant" && <Route path='/medicine/create' element={<MedicineCrate />} />}
 
                 {/* Pharmacist */}
-                { role === "pharmacist" && <Route path='/PayMedicineHome' element={<PayMedicineHome />}/> }
-                { role === "pharmacist" && <Route path='/medicinepay' element={<PayMedicineHistory />} /> }
-                { role === "pharmacist" && <Route path='/medicinepay/create' element={<PayMedicine />} /> }
+                {role === "pharmacist" && <Route path='/PayMedicineHome' element={<PayMedicineHome />} />}
+                {role === "pharmacist" && <Route path='/medicinepay' element={<PayMedicineHistory />} />}
+                {role === "pharmacist" && <Route path='/medicinepay/create' element={<PayMedicine />} />}
                 {role === "pharmacist" && <Route path="/PrescriptionHome" element={<PrescriptionHome />} />}
                 {role === "pharmacist" && (
                   <Route path="/Prescription" element={<Prescription />} />
@@ -189,13 +189,13 @@ function App() {
                 )}
 
 
-{ role === "pharmacist" && <Route path='/medicine_label/home' element={<MedicineLabelHome />} /> }
-                { role === "pharmacist" && <Route path='/medicine_labels' element={<MedicineLabel />} /> }
-                { role === "pharmacist" && <Route path='/medicine_labels/create' element={<MedicineLabelCreate />} /> }
+                {role === "pharmacist" && <Route path='/medicine_label/home' element={<MedicineLabelHome />} />}
+                {role === "pharmacist" && <Route path='/medicine_labels' element={<MedicineLabel />} />}
+                {role === "pharmacist" && <Route path='/medicine_labels/create' element={<MedicineLabelCreate />} />}
 
 
 
-                
+
               </Routes>
             </Main>
           </Box>

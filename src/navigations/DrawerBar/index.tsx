@@ -1,13 +1,14 @@
 import { Drawer, IconButton, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { styled } from '@mui/material/styles';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import HomeIcon from '@mui/icons-material/Home';
 
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import MedicationLiquidIcon from '@mui/icons-material/MedicationLiquid';
+import MedicationIcon from '@mui/icons-material/Medication';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -45,9 +46,9 @@ export default function DrawerBar({ role, drawerWidth, handleDrawerClose, open ,
         else if (role === "pharmacist") {
             menu = [
                 ...menu,
-                { "text": "หน้าแรกระบบจ่ายยา", "icon": <DashboardIcon />, "link": "/PayMedicineHome" },
-                { "text": "หน้าแรกระบบสั่งยา", "icon": <HomeIcon />, "link": "/PrescriptionHome" },
-                { "text": "หน้าแรกระบบฉลากยา", "icon": <HomeIcon />, "link": "/medicine_label/home" },
+                { "text": "หน้าแรกระบบจ่ายยา", "icon": <MedicationLiquidIcon />, "link": "/PayMedicineHome" },
+                { "text": "หน้าแรกระบบสั่งยา", "icon": <MedicationIcon />, "link": "/PrescriptionHome" },
+                { "text": "หน้าแรกระบบฉลากยา", "icon": <MedicalServicesIcon />, "link": "/medicine_label/home" },
 
                 
 

@@ -10,6 +10,7 @@ export const MedicineLabelHome = () => {
 
         <Typography align="center">
           <img style={{ width: "500px" }}
+            alt="Medicine Label"
             className="img"
             src={pic}></img>
         </Typography>
@@ -24,28 +25,26 @@ export const MedicineLabelHome = () => {
           โดยจะพิมพ์ฉลากยาออกมาติดไว้ที่หีบห่อบรรจุยาตอนจ่ายยา
         </p>
 
-        <Grid container>
-          <Grid item xs={2}>
-            <Button
-              component={RouterLink}
-              to="/medicine_labels/create"
-              variant="contained"
-            >
-              เพิ่มข้อมูลฉลากยา
-            </Button>
-          </Grid>
+        <Grid container xs={12} md={12} sx={{ justifyContent: "center" }}>
 
-          <Grid item xs={2}>
-            <Button
-              component={RouterLink}
-              to="/medicine_labels"
-              variant="contained"
-            >
-              ข้อมูลฉลากยา
-            </Button>
-          </Grid>
+          <Button
+            component={RouterLink}
+            to="/medicine_labels/create"
+            variant="contained"
+          >
+            เพิ่มข้อมูลฉลากยา
+          </Button>
 
+
+          <Button
+            component={RouterLink}
+            to="/medicine_labels"
+            variant="contained"
+          >
+            ข้อมูลฉลากยา
+          </Button>
         </Grid>
+
 
       </Container>
     </div>

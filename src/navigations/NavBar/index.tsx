@@ -6,6 +6,8 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { EmployeeInterface } from '../../models/IEmployee';
+import { Link as RouterLink } from "react-router-dom";
+
 
 const drawerWidth = 240;
 
@@ -52,19 +54,19 @@ export default function Navbar({ open, onClick }: any) {
 
   useEffect(() => {
     const getEmployee = () => {
-      fetch(`${apiUrl}/employee/${localStorage.getItem("uid")}`,reqOptGet)
-      .then((res) => res.json())
-      .then((res) => {
-        if(res.data){
-          setEmployee(res.data)
-        }else{
-          console.log("else")
-        }
-      })
+      fetch(`${apiUrl}/employee/${localStorage.getItem("uid")}`, reqOptGet)
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.data) {
+            setEmployee(res.data)
+          } else {
+            console.log("else")
+          }
+        })
     }
 
     getEmployee()
-    
+
   }, [])
 
 
@@ -81,11 +83,18 @@ export default function Navbar({ open, onClick }: any) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div">
-          Welcome to Medicine System
+          <Button
+            component={RouterLink}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Welcome to Medicine System
+          </Button>
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: 'flex' }}>
-          <Button size="large" color="inherit" onClick={handleSignOutClick}  variant='outlined'>
+          <Button size="large" color="inherit" onClick={handleSignOutClick} variant='outlined'>
             <Badge color="error">
               <Typography>
                 {employee.Name + "  " + employee.Surname}
