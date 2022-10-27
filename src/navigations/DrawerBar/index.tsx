@@ -1,4 +1,5 @@
 import { Drawer, IconButton, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import { styled } from '@mui/material/styles';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -40,7 +41,7 @@ export default function DrawerBar({ role, drawerWidth, handleDrawerClose, open ,
                 ...menu,
                 { "text" : "ระบบบันทึกข้อมูลยา",icon: <MedicalServicesIcon />, "link": "/medicines/Home"},
                 //{ "text": "A", "icon": <InboxIcon />, "link": "/" } form 
-
+                { "text": "ระบบสั่งจัดซื้อยา", "icon": <MedicationLiquidIcon />, "link": "/order/home" },
             ]
         }
         else if (role === "pharmacist") {
@@ -57,7 +58,10 @@ export default function DrawerBar({ role, drawerWidth, handleDrawerClose, open ,
         else if (role === "payment") {
             menu = [
                 //{ "text": "A", "icon": <InboxIcon />, "link": "/" } form 
-
+                ...menu,
+                { "text": "ข้อมูลการชำระเงิน", "icon": <DashboardIcon />, "link": "payment" },
+                { "text": "ระบบชำระเงิน", "icon": <DashboardIcon />, "link": "/paymentCreate" },
+                { "text":"หน้าแรกระบบชำระเงิน","icon": <MedicationIcon />, "link":"/paymentHome"}
             ]
         }
 

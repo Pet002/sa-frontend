@@ -27,6 +27,12 @@ import Home from './components/Home';
 import MedicineLabelCreate from './components/MedicineLabel/MedicineLabelCreate';
 import MedicineLabel from './components/MedicineLabel/MedicineLabel';
 import { MedicineLabelHome } from './components/Home/MedicineLabelHome';
+import { OrderHome } from './components/OrderMedicine/Home';
+import { OrderPage } from './components/OrderMedicine/Order';
+import { OrderHistory } from './components/OrderMedicine/History';
+import PaymentHome from './components/PaymentHome';
+import Payment from './components/Payment';
+import PaymentCreate from './components/PaymentCreate';
 
 const drawerWidth = 240;
 
@@ -166,6 +172,10 @@ function App() {
                 {role === "intendant" && <Route path='/medicines/Home' element={<MedicineHome />} />}
                 {role === "intendant" && <Route path='/medicines' element={<Medicine />} />}
                 {role === "intendant" && <Route path='/medicine/create' element={<MedicineCrate />} />}
+                {role === "intendant" && <Route path='/order/home' element={<OrderHome/>}/>}
+                {role === "intendant" && <Route path='/order/history' element={<OrderHistory/>}/>}
+                {role === "intendant" && <Route path='/order/ordermedicine' element={<OrderPage/>}/>}
+
 
                 {/* Pharmacist */}
                 {role === "pharmacist" && <Route path='/PayMedicineHome' element={<PayMedicineHome />} />}
@@ -194,6 +204,9 @@ function App() {
                 {role === "pharmacist" && <Route path='/medicine_labels/create' element={<MedicineLabelCreate />} />}
 
 
+                { role === "payment" && <Route path="/paymentHome" element={<PaymentHome />} /> }
+                { role === "payment" && <Route path="/payment" element={<Payment />} /> }
+                { role === "payment" && <Route path="/paymentCreate" element={<PaymentCreate />} /> }
 
 
               </Routes>

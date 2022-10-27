@@ -35,7 +35,7 @@ export const MedicineLabelHome = () => {
             เพิ่มข้อมูลฉลากยา
           </Button>
 
-
+          &nbsp;
           <Button
             component={RouterLink}
             to="/medicine_labels"

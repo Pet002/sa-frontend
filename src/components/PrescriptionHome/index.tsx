@@ -45,10 +45,11 @@ function PrescriptionHome() {
           รายการไหนเป็นของผู้ป่วยชื่อว่าอะไร มีประวัติการใช้ยาตัวไหนบ้าง
           และทำรายการในช่วงวันเวลาไหน
         </p>
-        <Button component={RouterLink} to="/Patient" variant="contained">ข้อมูลผู้ป่วย</Button> &nbsp;
-        <Button component={RouterLink} to="/Prescription" variant="contained">สั่งยา</Button>&nbsp;
-        <Button component={RouterLink} to="/PrescriptionHistory" variant="contained">ประวัติการสั่งยา</Button>
-
+       
+          <Button component={RouterLink} to="/Patient" variant="contained">ข้อมูลผู้ป่วย</Button> &nbsp;
+          <Button component={RouterLink} to="/Prescription" variant="contained">สั่งยา</Button>&nbsp;
+          <Button component={RouterLink} to="/PrescriptionHistory" variant="contained">ประวัติการสั่งยา</Button>
+       
       </Container>
     </div>
   );
