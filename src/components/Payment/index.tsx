@@ -12,10 +12,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { MedicineInterface } from "../../models/IMedicine";
 import { Button } from "@mui/material";
+import { PrescriptionInterface } from "../../models/IPrescription";
 function Payment() {
   const [Receipt, setHistory] = React.useState<ReceiptInterface[]>([]);
 
   const [medicine, setMedicine] = React.useState<MedicineInterface[]>([]);
+  const [prescription, setPrescription] = React.useState<PrescriptionInterface[]>([])
 
   const getMedicine = async () => {
     const apiUrl = "http://localhost:8080/payment/medicine";
@@ -38,6 +40,28 @@ function Payment() {
     })
   }
 
+  const getPrescription = () => {
+    const apiUrl = "http://localhost:8080/payment/prescriptions";
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(apiUrl, requestOptions)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.data) {
+          setPrescription(res.data);
+          // console.log(res.data);
+        } else {
+          console.log("else");
+        }
+      });
+
+  }
+
   const getReceiptHistory = async () => {
     const apiUrl = "http://localhost:8080/payment/receipts";
     const requestOptions = {
@@ -53,7 +77,7 @@ function Payment() {
       .then((res) => {
         if (res.data) {
           setHistory(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         } else {
           console.log("else");
         }
@@ -63,6 +87,7 @@ function Payment() {
   useEffect(() => {
     getReceiptHistory();
     getMedicine();
+    getPrescription();
   }, []);
 
 
@@ -72,7 +97,12 @@ function Payment() {
   const test = () => {
     console.log(Receipt)
   }
-
+  const show = (id :number) => {
+    //เงื่อนไขแรก ค้นหา prescription idจากที่โหลดมาทั้งหมดโดยเอาที่ค่า ID ตรงกับที่รับมาคือ PrescriptionID
+    let medid = prescription.filter( (pre) => (pre.ID === id) ).at(0)?.MedicineID
+    //เงื่อนไขแรก ค้นหา medid จากที่โหลดมาทั้งหมด ให้ตรงกับ medid ?ี่ไปค้นหามาจากเงื่อนไขแรก
+    return medicine.filter((mid) => (mid.ID === medid)).at(0)?.Name;
+  }
 
   return (
     <Container className="container" maxWidth="md">
@@ -89,7 +119,7 @@ function Payment() {
             <TableRow>
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">Employee ID</TableCell>
-              {/* <TableCell align="center">ชื่อยา</TableCell> */}
+              <TableCell align="center">ชื่อยา</TableCell>
               <TableCell align="center">จำนวนยา</TableCell>
               <TableCell align="center">ราคารวม</TableCell>
               <TableCell align="center">ประเภทการชำระเงิน</TableCell>
@@ -107,9 +137,9 @@ function Payment() {
                 <TableCell align="center">
                   {Receipt.Employee?.Name}
                 </TableCell>
-                {/* <TableCell align="center">
-                  {Receipt.PayMedicine?.Prescription.Medicine?.Name}
-                </TableCell> */}
+                <TableCell align="center">
+                  {show(Receipt.PayMedicine?.PrescriptionID as number)}
+                </TableCell>
                 <TableCell align="center">
                 {Receipt.PayMedicine?.Amount}
                 </TableCell>

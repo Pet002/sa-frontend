@@ -59,9 +59,10 @@ export default function DrawerBar({ role, drawerWidth, handleDrawerClose, open ,
             menu = [
                 //{ "text": "A", "icon": <InboxIcon />, "link": "/" } form 
                 ...menu,
+                { "text":"หน้าแรกระบบชำระเงิน","icon": <MedicationIcon />, "link":"/paymentHome"},
                 { "text": "ข้อมูลการชำระเงิน", "icon": <DashboardIcon />, "link": "payment" },
                 { "text": "ระบบชำระเงิน", "icon": <DashboardIcon />, "link": "/paymentCreate" },
-                { "text":"หน้าแรกระบบชำระเงิน","icon": <MedicationIcon />, "link":"/paymentHome"}
+                
             ]
         }
 
